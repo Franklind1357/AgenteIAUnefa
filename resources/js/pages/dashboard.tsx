@@ -71,7 +71,7 @@ export default function Dashboard({ incumplimientos }: Props) {
                         />
                         <DashboardCard 
                             type="module"
-                            title="Control Biométrico"
+                            title="Estudiantes y Control Biométrico"
                             description="Administración de credenciales criptográficas, logs de accesos del personal administrativo y bedeles de guardia."
                             status="Activo"
                             icon={<Fingerprint size={20} />}

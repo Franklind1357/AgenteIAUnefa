@@ -17,6 +17,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dispositivos',[DispositivosController::class, 'index'])->name('dispositivos.index');
     Route::get('/dispositivos/create',[DispositivosController::class, 'create'])->name('dispositivos.create');
     Route::post('/dispositivos/store',[DispositivosController::class, 'store'])->name('dispositivos.store');
+    Route::get('/dispositivos/show/{dispositivos}',[DispositivosController::class, 'show'])->name('dispositivos.show');
+    Route::get('/dispositivos/show/{dispositivos}/edit',[DispositivosController::class, 'edit'])->name('dispositivos.edit');
+    Route::put('/dispositivos/show/{dispositivos}/edit/update',[DispositivosController::class, 'update'])->name('dispositivos.update');
     
 });
 

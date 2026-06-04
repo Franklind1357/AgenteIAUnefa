@@ -16,10 +16,9 @@ return new class extends Migration
             $table->string('name', 50); 
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('nombre', 100);
             $table->string('ubicacion');
             $table->string('tipo'); 
-            $table->string('estado')->default('activo');
+            $table->string('estado');
 
             $table->foreignId('id_users')->constrained('users');
             $table->timestamps();

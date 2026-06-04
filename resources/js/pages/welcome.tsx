@@ -61,7 +61,7 @@ export default function Welcome() {
                                     {/* 🛡️ ESCUDO ADAPTATIVO MODIFICADO 🔥 */}
                                     {/* He aumentado significativamente el tamaño en todos los breakpoints: h-16 móvil, h-28 PC */}
                                     <img 
-                                        src="/img/LogoEscudo.png" 
+                                        src="./img/LogoEscudo.png" 
                                         alt="Escudo UNEFA" 
                                         // NUEVO TAMAÑO ESCALABLE: h-16 (64px móvil) -> h-20 (tablet) -> h-28 (desktop 112px)
                                         // NUEVO ESPACIADO: mr-3 (móvil) -> md:mr-6 (PC)

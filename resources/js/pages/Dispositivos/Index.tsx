@@ -1,11 +1,11 @@
 import { Head, Link } from '@inertiajs/react';
 import React from 'react';
 import { HardDrive, Settings, Plus } from 'lucide-react';
-import DashboardCard from '@/components/ComponentesNuevos/dasboard-cards';
+import CardsDispositivos from '@/components/ComponentesNuevos/CardsDispositivos';
 
 interface Dispositivo {
     id: number;
-    nombre: string;
+    name: string;
     estado: string; // Ej: 'Activo', 'Inactivo', 'Falla'
     ubicacion: string;
     tipo: string; // Actúa como la función del dispositivo
@@ -65,10 +65,11 @@ export default function GestionSistema({ dispositivos }: IndexProps) {
                                 const esActivo = dispositivo.estado?.toLowerCase() === 'activo' || dispositivo.estado?.toLowerCase() === 'en línea';
 
                                 return (
-                                    <DashboardCard 
+                                    <CardsDispositivos 
+                                        direction={`/dispositivos/show/${dispositivo.id}`} 
                                         key={dispositivo.id}
                                         type="module"
-                                        title={dispositivo.nombre}
+                                        title={dispositivo.name}
                                         description={`Área: ${dispositivo.ubicacion} • Rol: ${dispositivo.tipo}`}
                                         status={dispositivo.estado}
                                         icon={<HardDrive size={20} />}

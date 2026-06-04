@@ -13,5 +13,6 @@ class Dispositivos extends Model
         'ubicacion',
         'tipo',
         'estado',
+        'id_users',
     ];
 }
