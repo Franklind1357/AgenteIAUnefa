@@ -107,6 +107,7 @@ export default function IndexEstudiantes({ estudiantes }: IndexProps) {
                         title="Estudiantes Registrados"
                         description="Lista global del personal estudiantil para la verificación por visión artificial."
                         data={estudiantes} 
+                        href="/estudiantes/create"
                         columns={columnas}
                         itemsPerPage={8}
                         onAdd={() => setIsModalOpen(true)}

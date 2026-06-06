@@ -28,4 +28,11 @@ export default defineConfig({
             formVariants: true,
         }),
     ],
+    //recuerda quitarme cuando se haga en produccion
+    server:{
+            host: '0.0.0.0',
+            hmr:{
+                host: '192.168.0.104'
+            },
+        }
 });

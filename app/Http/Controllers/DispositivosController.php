@@ -149,6 +149,16 @@ class DispositivosController extends Controller
      */
     public function destroy(Dispositivos $dispositivos)
     {
-        //
+        $dispositivo = Dispositivos::findOrFail($dispositivos->id);
+
+        $usuario = User::find($dispositivo->id_users);
+
+        $dispositivo->delete();
+
+        if($usuario) {
+            $usuario->delete();
+        }
+
+        return redirect()-> route('dispositivos.index');
     }
 }

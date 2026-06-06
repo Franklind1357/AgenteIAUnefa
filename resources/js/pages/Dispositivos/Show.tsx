@@ -1,6 +1,6 @@
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, router } from '@inertiajs/react';
 import React from 'react';
-import { HardDrive, ShieldCheck, MapPin, Cpu, Activity, ArrowLeft, Edit, AlertCircle } from 'lucide-react';
+import { HardDrive, ShieldCheck, MapPin, Cpu, Activity, ArrowLeft, Edit, AlertCircle , Trash2} from 'lucide-react';
 
 // Reutilizamos tu interfaz expandiendo los campos reales que tiene tu tabla
 interface Dispositivo {
@@ -32,6 +32,21 @@ export default function VerDispositivo({ dispositivo }: ShowProps) {
             ? "bg-rose-50 text-rose-600 border-rose-200"
             : "bg-amber-50 text-amber-600 border-amber-200";
 
+    const handleEliminar = () =>{
+        const seguro = confirm("¿Estás seguro de que deseas eliminar este Dispositivo? Esta acción no se puede deshacer.");
+
+        if(seguro){
+            router.delete(`/dispositivos/show/${dispositivo.id}/delete`,{
+                onSuccess: () => {
+                    alert("Dispositivo eliminado exitosamente.");
+                },
+                onError: (errors) =>{
+                    console.error("Error al eliminar el dispositivo:", errors);
+                }
+            })
+        }
+    }
+
     return (
         <>
             <Head title={`Detalle: ${dispositivo.name} - UNEFA AI`} />
@@ -61,6 +76,14 @@ export default function VerDispositivo({ dispositivo }: ShowProps) {
 
                     {/* Acciones del Dispositivo */}
                     <div className="flex items-center gap-3 self-start sm:self-auto">
+                        <button
+                            onClick={handleEliminar}
+                            className="inline-flex cursor-pointer items-center justify-center gap-1.5 px-3.5 py-2 text-xs font-bold text-stone-100 bg-red-600 border border-stone-200 rounded-xl shadow-sm hover:bg-red-500 transition-all active:scale-[0.98]"
+                        >
+                            <Trash2 size={14} />
+                            <span>Eliminar Nodo</span>
+                        </button>
+
                         <Link
                             href={`/dispositivos/show/${dispositivo.id}/edit`}
                             className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 text-xs font-bold text-stone-600 bg-white border border-stone-200 rounded-xl shadow-sm hover:bg-stone-50 transition-all active:scale-[0.98]"
@@ -69,6 +92,7 @@ export default function VerDispositivo({ dispositivo }: ShowProps) {
                             <span>Editar Nodo</span>
                         </Link>
                     </div>
+                    
                 </div>
 
                 {/* Grid del Contenido de la Ficha */}
@@ -122,17 +146,6 @@ export default function VerDispositivo({ dispositivo }: ShowProps) {
                                     </div>
                                 </div>
 
-                            </div>
-                        </div>
-
-                        {/* Subtarjeta: Estado de Seguridad */}
-                        <div className="p-5 rounded-2xl border border-stone-200 bg-white/40 backdrop-blur-sm flex gap-4 items-start">
-                            <AlertCircle className="text-stone-400 mt-0.5 shrink-0" size={18} />
-                            <div className="space-y-1">
-                                <h4 className="text-xs font-bold text-stone-700">Políticas de Capa Periférica</h4>
-                                <p className="text-xs text-stone-500 leading-relaxed">
-                                    Este nodo está securizado bajo el protocolo del módulo **AgenteIA**. Las credenciales locales de encriptación están vinculadas directamente al núcleo del servidor.
-                                </p>
                             </div>
                         </div>
                     </div>

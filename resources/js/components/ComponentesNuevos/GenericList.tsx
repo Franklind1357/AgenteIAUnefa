@@ -11,6 +11,7 @@ export interface ColumnDef<T> {
 interface GenericListProps<T> {
     title: string;
     description?: string;
+    href?: string;
     data: T[];
     columns: ColumnDef<T>[];
     onAdd?: () => void;
@@ -24,6 +25,7 @@ interface GenericListProps<T> {
 export default function GenericList<T>({
     title,
     description,
+    href,
     data,
     columns,
     onAdd,
@@ -83,7 +85,7 @@ export default function GenericList<T>({
                     {/* Botón Agregar */}
                     {onAdd && (
                         <a 
-                            href='#'
+                            href={href || ''}
                             className="w-full sm:w-auto flex cursor-pointer items-center justify-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white text-sm font-medium rounded-xl transition-all shadow-sm shadow-sky-500/20 active:scale-95"
                         >
                             <Plus size={16} />
