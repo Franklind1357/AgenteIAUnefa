@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('nombre', 100);
             $table->string('apellido', 100);
             $table->string('cedula', 20)->unique(); 
-            $table->string('correo', 150)->unique();
             $table->string('carrera', 100);
+            $table->string('semestre', 200);
             $table->string('estado')->default('activo');
             $table->timestamps();
         });

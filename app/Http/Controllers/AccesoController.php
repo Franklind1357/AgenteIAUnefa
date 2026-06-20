@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Acceso;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 
 class AccesoController extends Controller
@@ -12,7 +13,7 @@ class AccesoController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Accesos/Index');
     }
 
     /**

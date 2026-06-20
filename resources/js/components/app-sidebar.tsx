@@ -1,4 +1,4 @@
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
@@ -43,8 +43,8 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
     {
-        title: 'Reglamento',
-        href: '/reglamento',
+        title: 'Reglamentos',
+        href: '/reglamentos',
         icon: LayoutGrid,
     },
 ];
@@ -54,6 +54,20 @@ const footerNavItems: NavItem[] = [
 ];
 
 export function AppSidebar() {
+    const { canGestionAdministrativa } = usePage<{ canGestionAdministrativa: boolean }>().props;
+
+    if (!canGestionAdministrativa) {
+        return (
+            <Sidebar collapsible="icon" variant="inset">
+
+            <SidebarFooter>
+                <NavFooter items={footerNavItems} className="mt-auto" />
+                <NavUser />
+            </SidebarFooter>
+        </Sidebar>
+        );
+    }
+
     return (
         <Sidebar collapsible="icon" variant="inset">
             <SidebarHeader>

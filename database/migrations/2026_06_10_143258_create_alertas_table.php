@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -13,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('alertas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_incumplimiento')->constrained('incumplimientos')->onDelete('cascade');
+            $table->foreignId('id_infracciones')->constrained('infracciones')->onDelete('cascade');
             $table->text('mensaje');
             $table->string('nivel');
             $table->timestamp('leido_el')->nullable();
@@ -22,14 +23,14 @@ return new class extends Migration
 
         // TRIGGER en Español
         DB::unprepared('
-            CREATE TRIGGER tr_alerta_automatica_incumplimiento
-            AFTER INSERT ON incumplimientos
+            CREATE TRIGGER tr_alerta_automatica_infraccion
+            AFTER INSERT ON infracciones
             FOR EACH ROW
             BEGIN
-                INSERT INTO alertas (id_incumplimiento, mensaje, nivel, created_at, updated_at)
+                INSERT INTO alertas (id_infracciones, mensaje, nivel, created_at, updated_at)
                 VALUES (
                     NEW.id, 
-                    CONCAT("Nueva infracción detectada para el estudiante ID: ", NEW.id_estudiante),
+                    CONCAT("Nueva infracción detectada con ID: ", NEW.id),
                     "urgente",
                     NOW(),
                     NOW()
@@ -39,7 +40,7 @@ return new class extends Migration
     }
 
     public function down(): void {
-        DB::unprepared('DROP TRIGGER IF EXISTS tr_alerta_automatica_incumplimiento');
+        DB::unprepared('DROP TRIGGER IF EXISTS tr_alerta_automatica_infraccion');
         Schema::dropIfExists('alertas');
     }
 };

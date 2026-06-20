@@ -52,6 +52,8 @@ class DispositivosController extends Controller
             'email' => $validated['email'],
             'password' => $claveHasheada,
         ]);
+
+        $nuevoUsuario->assignRole('dispositivo');
         
         $dispositivo = Dispositivos::create([
             'name' => $validated['name'],

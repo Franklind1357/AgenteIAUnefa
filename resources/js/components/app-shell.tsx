@@ -9,7 +9,12 @@ type Props = {
 };
 
 export function AppShell({ children, variant = 'sidebar' }: Props) {
-    const isOpen = usePage().props.sidebarOpen;
+    const { sidebarOpen, canGestionAdministrativa } = usePage<{
+        sidebarOpen: boolean;
+        canGestionAdministrativa: boolean;
+    }>().props;
+
+    const defaultOpen = canGestionAdministrativa ? sidebarOpen : false;
 
     if (variant === 'header') {
         return (
@@ -17,5 +22,5 @@ export function AppShell({ children, variant = 'sidebar' }: Props) {
         );
     }
 
-    return <SidebarProvider defaultOpen={isOpen}>{children}</SidebarProvider>;
+    return <SidebarProvider defaultOpen={defaultOpen}>{children}</SidebarProvider>;
 }

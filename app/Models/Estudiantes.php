@@ -11,13 +11,13 @@ class Estudiantes extends Model
         'nombre',
         'apellido',
         'cedula',
-        'correo',
         'carrera',
+        'semestre',
         'estado',
     ];
 
     public function registros() {
 
-    return $this->hasMany(RegistroAcceso::class, 'id_estudiante');
+    return $this->hasMany(Acceso::class, 'id_estudiante');
 }
 }

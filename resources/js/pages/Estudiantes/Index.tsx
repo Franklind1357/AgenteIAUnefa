@@ -1,4 +1,4 @@
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import React, { useState } from 'react';
 import GenericList, { ColumnDef } from '@/components/ComponentesNuevos/GenericList';
 import { GraduationCap, X, UserPlus, Fingerprint } from 'lucide-react';
@@ -10,6 +10,8 @@ interface Estudiante {
     nombre: string;
     carrera: string;
     semestre: string;
+    carrera_label: string;
+    semestre_label: string;
     estado: 'Activo' | 'Inactivo' | 'Sancionado';
 }
 
@@ -50,9 +52,9 @@ export default function IndexEstudiantes({ estudiantes }: IndexProps) {
             header: 'Programa Académico',
             accessor: (row) => (
                 <div>
-                    <div className="font-semibold text-stone-700">{row.carrera}</div>
+                    <div className="font-semibold text-stone-700">{row.carrera_label}</div>
                     <div className="text-xs text-stone-500 mt-0.5 flex items-center gap-1">
-                        <GraduationCap size={12} /> {row.semestre}
+                        <GraduationCap size={12} /> {row.semestre_label}
                     </div>
                 </div>
             )
@@ -75,9 +77,9 @@ export default function IndexEstudiantes({ estudiantes }: IndexProps) {
         {
             header: 'Acciones',
             accessor: (row) => (
-                <button className="text-sky-500 hover:text-sky-600 text-[11px] font-bold uppercase tracking-wider transition-colors px-3 py-1.5 rounded-lg hover:bg-sky-50">
+                <Link href={`/estudiantes/show/${row.id}`} className="text-sky-500 hover:text-sky-600 text-[11px] font-bold uppercase tracking-wider transition-colors px-3 py-1.5 rounded-lg hover:bg-sky-50">
                     Detalles
-                </button>
+                </Link>
             ),
             className: 'text-right'
         }
@@ -116,7 +118,7 @@ export default function IndexEstudiantes({ estudiantes }: IndexProps) {
                         searchFilter={(estudiante, query) => 
                             (estudiante.nombre?.toLowerCase().includes(query) || false) || 
                             (estudiante.cedula?.toLowerCase().includes(query) || false) ||
-                            (estudiante.carrera?.toLowerCase().includes(query) || false)
+                            (estudiante.carrera_label?.toLowerCase().includes(query) || false)
                         }
                     />
                 </div>

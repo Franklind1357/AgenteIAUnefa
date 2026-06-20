@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('normas', function (Blueprint $table) {
+        Schema::create('infracciones', function (Blueprint $table) {
             $table->id();
-            $table->text('descripcion');
-            $table->string('tipo'); // Vestimenta, Conducta, Seguridad
-            $table->string('nivel_gravedad'); // Leve, Grave, Crítica
+            $table->string('nombre');
+            $table->string('descripcion');
+            $table->string('gravedad');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('normas');
+        Schema::dropIfExists('infracciones');
     }
 };

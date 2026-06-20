@@ -30,7 +30,7 @@ export default function DashboardCard({
     // 📊 DISEÑO: TARJETA DE ESTADÍSTICAS (Glassmorphism Claro)
     if (type === 'stat') {
         return (
-            <div className="relative overflow-hidden rounded-2xl border cursor-pointer border-stone-200/80 bg-white/60 backdrop-blur-xl p-5 shadow-sm transition-all duration-300 hover:border-sky-300 hover:bg-white/90 hover:shadow-[0_10px_30px_rgba(14,165,233,0.08)] group">
+            <div className="relative overflow-hidden rounded-2xl border border-stone-200/80 bg-white/60 backdrop-blur-xl p-5 shadow-sm transition-all duration-300 hover:border-sky-300 hover:bg-white/90 hover:shadow-[0_10px_30px_rgba(14,165,233,0.08)] group">
                 {/* Brillo ambiental sutil azul sky en hover */}
                 <div className="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-sky-400/10 blur-2xl transition-opacity opacity-0 group-hover:opacity-100" />
                 

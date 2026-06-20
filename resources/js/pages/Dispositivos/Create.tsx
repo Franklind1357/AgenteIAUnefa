@@ -183,10 +183,19 @@ export default function CreateDispositivo() {
 
                         {/* Sección del Botón de Enviar */}
                         <div className="pt-4 border-t border-stone-100 flex justify-end">
+                            
+                            <Link
+                                href={'/dispositivos'}
+                                className="mr-3 inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-bold text-white bg-stone-400 border border-stone-300 rounded-xl shadow-md shadow-sky-500/10 hover:bg-stone-500 transition-all"
+                            >
+                                <ArrowLeft size={14} />
+                                Cancelar
+                            </Link>
+                            
                             <button
                                 type="submit"
                                 disabled={processing}
-                                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-bold text-white bg-sky-500 border border-sky-600 rounded-xl shadow-md shadow-sky-500/10 hover:bg-sky-600 transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none"
+                                className="inline-flex items-center cursor-pointer justify-center gap-2 px-5 py-2.5 text-xs font-bold text-white bg-sky-500 border border-sky-600 rounded-xl shadow-md shadow-sky-500/10 hover:bg-sky-600 transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none"
                             >
                                 <Save size={14} />
                                 {processing ? 'Guardando Nodo...' : 'Guardar Dispositivo'}

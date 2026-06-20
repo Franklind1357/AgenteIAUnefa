@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Incumplimientos;
+use App\Models\InfraccionesEstudiantes;
 use Illuminate\Http\Request;
 
-class IncumplimientosController extends Controller
+class InfraccionesEstudiantesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class IncumplimientosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Incumplimientos $incumplimientos)
+    public function show(InfraccionesEstudiantes $infraccionesEstudiantes)
     {
         //
     }
@@ -42,7 +42,7 @@ class IncumplimientosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Incumplimientos $incumplimientos)
+    public function edit(InfraccionesEstudiantes $infraccionesEstudiantes)
     {
         //
     }
@@ -50,7 +50,7 @@ class IncumplimientosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Incumplimientos $incumplimientos)
+    public function update(Request $request, InfraccionesEstudiantes $infraccionesEstudiantes)
     {
         //
     }
@@ -58,7 +58,7 @@ class IncumplimientosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Incumplimientos $incumplimientos)
+    public function destroy(InfraccionesEstudiantes $infraccionesEstudiantes)
     {
         //
     }
